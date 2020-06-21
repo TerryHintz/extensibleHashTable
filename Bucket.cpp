@@ -52,3 +52,7 @@ void Bucket::print(){
 bool Bucket::isFull(){
     return count == size;
 }
+
+Bucket::~Bucket(){
+    delete [] arr;
+}

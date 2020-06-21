@@ -9,6 +9,8 @@ class Bucket {
 
         bool isFull();
 
+        ~Bucket();
+
         int * arr;
         int localDepth;
         int size;

@@ -13,7 +13,6 @@ class ExtensibleHashTable {
 
     private:
         int globalDepth;
-        int size;
         Bucket** hashTable;
 
         int hashFunc(int);

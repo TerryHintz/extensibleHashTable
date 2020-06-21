@@ -6,7 +6,7 @@ using namespace std;
 
 ExtensibleHashTable::ExtensibleHashTable():ExtensibleHashTable(4){};
 
-ExtensibleHashTable::ExtensibleHashTable(int n):globalDepth(1), size(n){
+ExtensibleHashTable::ExtensibleHashTable(int n):globalDepth(1){
     hashTable = new Bucket*[2];
     hashTable[0] = new Bucket(n);
     hashTable[1] = new Bucket(n);
@@ -63,7 +63,11 @@ void ExtensibleHashTable::print(){
 };
 
 ExtensibleHashTable::~ExtensibleHashTable(){
-
+    int size = pow(2, globalDepth);
+    for(int i=0; i<size; i++){
+        delete hashTable[i];
+    }
+    delete [] hashTable;
 }
 
 int ExtensibleHashTable::hashFunc(int val){
