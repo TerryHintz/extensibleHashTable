@@ -9,7 +9,12 @@ Bucket::Bucket(int n):localDepth(1),size(n), count(0){
     arr = new int [size];
 }
 bool Bucket::find(int val){
-
+    for(int i=0; i<count; i++){
+        if(val == arr[i]){
+            return true;
+        }
+    }
+    return false;
 }
 void Bucket::insert(int val){
     arr[count++] = val;

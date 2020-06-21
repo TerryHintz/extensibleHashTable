@@ -53,8 +53,34 @@ void test3(){
     cout << endl;
 }
 
+void test4(){
+    ExtensibleHashTable temp = ExtensibleHashTable();
+    temp.insert(1);
+    temp.insert(2);
+    temp.insert(3);
+    temp.insert(4);
+    temp.insert(5);
+    temp.insert(6);
+    temp.insert(7);
+    temp.insert(8);
+    temp.insert(9);
+    temp.print();
+    bool res = temp.find(0);
+    cout << endl;
+    cout << res;
+    res = temp.find(1);
+    cout << endl;
+    cout << res;
+    res = temp.find(9);
+    cout << endl;
+    cout << res;
+    res = temp.find(10);
+    cout << endl;
+    cout << res;
+}
+
 int main(){
     // test1();
-    test3();
+    test4();
     return 0;
 }

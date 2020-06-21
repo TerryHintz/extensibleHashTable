@@ -12,7 +12,9 @@ ExtensibleHashTable::ExtensibleHashTable(int n):globalDepth(1), size(n){
     hashTable[1] = new Bucket(n);
 };
 bool ExtensibleHashTable::find(int val){
-
+    int index = hashFunc(val);
+    Bucket * bucket = hashTable[index];
+    return bucket->find(val);
 };
 
 void ExtensibleHashTable::insert(int val){
