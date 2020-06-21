@@ -1,6 +1,7 @@
 #include "ExtensibleHashTable.h"
 #include <iostream>
 #include <cmath>
+#include <exception>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ bool ExtensibleHashTable::find(int val){
 
 void ExtensibleHashTable::insert(int val){
     if(find(val)){
-        // runtime error
+        throw runtime_error("value to be inserted already exists");
     }
     int index = hashFunc(val);
     // int index = getLastBits(hashed, globalDepth);

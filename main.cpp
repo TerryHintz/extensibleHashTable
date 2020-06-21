@@ -122,8 +122,14 @@ void test6(){
     temp.print();
 }
 
+void test7(){
+    ExtensibleHashTable temp = ExtensibleHashTable(5);
+    temp.insert(1);
+    temp.insert(1);
+}
+
 int main(){
     // test1();
-    test6();
+    test7();
     return 0;
 }
