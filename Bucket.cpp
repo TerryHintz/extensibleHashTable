@@ -20,7 +20,20 @@ void Bucket::insert(int val){
     arr[count++] = val;
 }
 bool Bucket::remove(int val){
-
+    int index = -1;
+    for(int i=0; i<count; i++){
+        if(val == arr[i]){
+            index = i;
+        }
+    }
+    if(index == -1){
+        return false;
+    }
+    for(int i=index+1; i<count; i++){
+        arr[i-1] = arr[i];
+    }
+    count--;
+    return true;
 }
 void Bucket::print(){
     cout << "[";

@@ -18,6 +18,9 @@ bool ExtensibleHashTable::find(int val){
 };
 
 void ExtensibleHashTable::insert(int val){
+    if(find(val)){
+        // runtime error
+    }
     int index = hashFunc(val);
     // int index = getLastBits(hashed, globalDepth);
     Bucket * bucket = hashTable[index];
@@ -45,8 +48,11 @@ void ExtensibleHashTable::insert(int val){
 };
 
 bool ExtensibleHashTable::remove(int val){
-
+    int index = hashFunc(val);
+    Bucket * bucket = hashTable[index];
+    return bucket->remove(val);
 };
+
 void ExtensibleHashTable::print(){
     int size = pow(2, globalDepth);
     for(int i=0; i<size; i++){
