@@ -6,7 +6,7 @@ using namespace std;
 Bucket::Bucket():Bucket(4){}
 
 Bucket::Bucket(int n):localDepth(1),size(n), count(0){
-    arr = new int [size];
+    arr = new int[size];
 }
 bool Bucket::find(int val){
     for(int i=0; i<count; i++){
@@ -53,6 +53,23 @@ bool Bucket::isFull(){
     return count == size;
 }
 
+// bool Bucket::isEmpty(){
+//     return count == 0;
+// }
+
+bool Bucket::isSame(){
+    if(!isFull()){
+        return false;
+    }
+    int val = arr[0];
+    for(int i=1; i<size; i++){
+        if(arr[i] != val){
+            return false;
+        }
+    }
+    return true;
+}
+
 Bucket::~Bucket(){
-    delete [] arr;
+    // delete[] arr;
 }

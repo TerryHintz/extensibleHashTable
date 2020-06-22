@@ -16,7 +16,7 @@ class ExtensibleHashTable {
         Bucket** hashTable;
 
         int hashFunc(int);
-        int getLastBits(int, int);
+        // int getLastBits(int, int);
         void doubleSize();
         void split(Bucket*, int);
 };

@@ -5,23 +5,20 @@
 
 using namespace std;
 
-ExtensibleHashTable::ExtensibleHashTable():ExtensibleHashTable(4){};
+ExtensibleHashTable::ExtensibleHashTable():ExtensibleHashTable(4){}
 
 ExtensibleHashTable::ExtensibleHashTable(int n):globalDepth(1){
     hashTable = new Bucket*[2];
     hashTable[0] = new Bucket(n);
     hashTable[1] = new Bucket(n);
-};
+}
 bool ExtensibleHashTable::find(int val){
     int index = hashFunc(val);
     Bucket * bucket = hashTable[index];
     return bucket->find(val);
-};
+}
 
 void ExtensibleHashTable::insert(int val){
-    if(find(val)){
-        throw runtime_error("value to be inserted already exists");
-    }
     int index = hashFunc(val);
     // int index = getLastBits(hashed, globalDepth);
     Bucket * bucket = hashTable[index];
@@ -46,13 +43,13 @@ void ExtensibleHashTable::insert(int val){
         split(bucket, index);
         insert(val);
     }
-};
+}
 
 bool ExtensibleHashTable::remove(int val){
     int index = hashFunc(val);
     Bucket * bucket = hashTable[index];
     return bucket->remove(val);
-};
+}
 
 void ExtensibleHashTable::print(){
     int size = pow(2, globalDepth);
@@ -61,14 +58,14 @@ void ExtensibleHashTable::print(){
         hashTable[i]->print();
         cout << endl;
     }
-};
+}
 
 ExtensibleHashTable::~ExtensibleHashTable(){
-    int size = pow(2, globalDepth);
-    for(int i=0; i<size; i++){
-        delete hashTable[i];
-    }
-    delete [] hashTable;
+    // int size = pow(2, globalDepth);
+    // for(int i=0; i<size; i++){
+    //     delete hashTable[i];
+    // }
+    // delete [] hashTable;
 }
 
 int ExtensibleHashTable::hashFunc(int val){
@@ -76,9 +73,10 @@ int ExtensibleHashTable::hashFunc(int val){
     return val%size;
 }
 
-int ExtensibleHashTable::getLastBits(int val, int depth){
-    int n = val & ((1 << depth) - 1);
-}
+// int ExtensibleHashTable::getLastBits(int val, int depth){
+//     int n = val & ((1 << depth) - 1);
+//     return n;
+// }
 
 void ExtensibleHashTable::doubleSize(){
     // cout << "double func" << endl;
@@ -100,6 +98,9 @@ void ExtensibleHashTable::doubleSize(){
 }
 
 void ExtensibleHashTable::split(Bucket* bucket, int index){
+    if(bucket->isSame()){
+        throw runtime_error("Cannot split, bucket full of identical keys");
+    }
     int newLocalDepth = ++bucket->localDepth;
     hashTable[index] = new Bucket(bucket->size);
     hashTable[index]->localDepth = newLocalDepth;

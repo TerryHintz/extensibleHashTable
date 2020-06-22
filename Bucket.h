@@ -8,6 +8,8 @@ class Bucket {
         void print();
 
         bool isFull();
+        // bool isEmpty();
+        bool isSame();
 
         ~Bucket();
 

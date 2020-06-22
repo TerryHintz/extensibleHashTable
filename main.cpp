@@ -52,8 +52,8 @@ void test3(){
     temp.print();
     cout << endl;
 
-    temp.remove(253);
-    temp.print();
+    // temp.remove(253);
+    // temp.print();
 }
 
 void test4(){
@@ -126,10 +126,20 @@ void test7(){
     ExtensibleHashTable temp = ExtensibleHashTable(5);
     temp.insert(1);
     temp.insert(1);
+    temp.insert(1);
+    temp.insert(1);
+    temp.insert(1);
+    temp.insert(1);
+    temp.print();
 }
 
 int main(){
-    // test1();
+    test1();
+    test2();
+    test3();
+    test4();
+    test5();
+    test6();
     test7();
     return 0;
 }
